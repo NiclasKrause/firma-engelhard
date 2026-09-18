@@ -38,7 +38,36 @@ export default async function ProjectDetailPage({
 
   return (
     <article className="pt-24">
-      {project.image ? (
+      {project.imageBefore ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2">
+          <div className="relative h-[42vh] min-h-[280px] sm:h-[60vh]">
+            <Image
+              src={project.imageBefore}
+              alt={`${project.name} — vorher`}
+              fill
+              sizes="(min-width: 640px) 50vw, 100vw"
+              className="object-cover"
+            />
+            <span className="absolute left-4 top-4 bg-dark/80 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-dark-text">
+              Vorher
+            </span>
+          </div>
+          <div className="relative h-[42vh] min-h-[280px] sm:h-[60vh]">
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={`${project.name} — nachher`}
+                fill
+                sizes="(min-width: 640px) 50vw, 100vw"
+                className="object-cover"
+              />
+            ) : null}
+            <span className="absolute left-4 top-4 bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-widest text-dark-text">
+              Nachher
+            </span>
+          </div>
+        </div>
+      ) : project.image ? (
         <div className="relative h-[60vh] min-h-[360px]">
           <Image src={project.image} alt={project.name} fill sizes="100vw" className="object-cover" />
         </div>

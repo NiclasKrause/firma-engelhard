@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { company } from "@/data/company";
 import { services } from "@/data/services";
+import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -13,8 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const serviceRoutes = services.map((s) => `/leistungen/${s.slug}`);
+  const projectRoutes = projects.map((p) => `/projekte/${p.slug}`);
 
-  return [...staticRoutes, ...serviceRoutes].map((path) => ({
+  return [...staticRoutes, ...serviceRoutes, ...projectRoutes].map((path) => ({
     url: `${company.url}${path}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
